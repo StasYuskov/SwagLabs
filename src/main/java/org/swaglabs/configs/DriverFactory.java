@@ -31,6 +31,10 @@ public class DriverFactory {
 
                 // Отключаем сохранение пароля
                 options.addArguments("--guest");
+                options.addArguments("--headless=new"); // обязательно для Linux-контейнера
+                options.addArguments("--no-sandbox");   // часто требуется в Docker
+                options.addArguments("--disable-dev-shm-usage"); // для маленькой shared memory
+                options.addArguments("--remote-allow-origins=*"); // для последних версий ChromeDriver
                 driver.set(new ChromeDriver(options));
                 break;
             }
